@@ -1,0 +1,47 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 20px rgba(255, 180, 100, 0.6);
+}
+
+.subtitle {
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.05em;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 480px) {
+  .title { font-size: 2rem; }
+  .subtitle { font-size: 0.95rem; }
+  .layout { gap: 1.4rem; padding: 1.4rem 0.8rem; }
+}
+
+@media (min-width: 768px) {
+  .title { font-size: 3.2rem; }
+}

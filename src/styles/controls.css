@@ -1,0 +1,116 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.4rem 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 320px;
+}
+
+/* 시작/정지 버튼 */
+.btn-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2.2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  will-change: transform;
+}
+
+.btn-toggle.playing {
+  background: linear-gradient(135deg, #ff6b9d, #ff4f81);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(255, 79, 129, 0.5);
+}
+
+.btn-toggle.paused {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #1a1a2e;
+  box-shadow: 0 4px 20px rgba(56, 249, 215, 0.4);
+}
+
+.btn-toggle:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.btn-toggle:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.btn-toggle:focus-visible {
+  outline: 3px solid #ffe066;
+  outline-offset: 3px;
+}
+
+.btn-icon { font-size: 1.2rem; }
+
+/* 속도 제어 */
+.speed-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.speed-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.speed-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-speed {
+  padding: 0.4rem 0.9rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-speed:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-speed.active {
+  background: rgba(255, 224, 102, 0.2);
+  border-color: #ffe066;
+  color: #ffe066;
+  box-shadow: 0 0 10px rgba(255, 224, 102, 0.3);
+}
+
+.btn-speed:focus-visible {
+  outline: 2px solid #ffe066;
+  outline-offset: 2px;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 480px) {
+  .controls {
+    padding: 1rem 1.2rem;
+    max-width: 280px;
+  }
+  .btn-toggle { font-size: 1rem; padding: 0.65rem 1.8rem; }
+  .btn-speed  { padding: 0.35rem 0.75rem; font-size: 0.82rem; }
+}

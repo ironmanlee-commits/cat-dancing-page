@@ -1,0 +1,169 @@
+/* 메인 댄스 애니메이션 - 좌우 흔들기 + 점프 */
+@keyframes dance {
+  0%   { transform: translateY(0) rotate(-8deg) scale(1); }
+  10%  { transform: translateY(-18px) rotate(0deg) scale(1.05); }
+  20%  { transform: translateY(-30px) rotate(8deg) scale(1.08); }
+  30%  { transform: translateY(-18px) rotate(0deg) scale(1.05); }
+  40%  { transform: translateY(0) rotate(-8deg) scale(1); }
+  50%  { transform: translateY(-10px) rotate(0deg) scale(1.03); }
+  60%  { transform: translateY(-20px) rotate(10deg) scale(1.06); }
+  70%  { transform: translateY(-10px) rotate(0deg) scale(1.03); }
+  80%  { transform: translateY(0) rotate(-6deg) scale(1); }
+  90%  { transform: translateY(-5px) rotate(3deg) scale(1.02); }
+  100% { transform: translateY(0) rotate(-8deg) scale(1); }
+}
+
+/* 고양이 이미지 흔들기 */
+@keyframes catWiggle {
+  0%   { transform: rotate(-5deg); }
+  25%  { transform: rotate(5deg) scaleX(1.05); }
+  50%  { transform: rotate(-3deg) scaleX(0.97); }
+  75%  { transform: rotate(7deg) scaleX(1.03); }
+  100% { transform: rotate(-5deg); }
+}
+
+/* 그림자 */
+@keyframes shadowPulse {
+  0%   { transform: scaleX(1); opacity: 0.3; }
+  30%  { transform: scaleX(0.6); opacity: 0.15; }
+  50%  { transform: scaleX(0.5); opacity: 0.1; }
+  80%  { transform: scaleX(0.7); opacity: 0.2; }
+  100% { transform: scaleX(1); opacity: 0.3; }
+}
+
+/* 음표 떠오르기 */
+@keyframes floatNote1 {
+  0%   { transform: translate(0, 0) rotate(-10deg); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 0.8; }
+  100% { transform: translate(-30px, -100px) rotate(20deg); opacity: 0; }
+}
+@keyframes floatNote2 {
+  0%   { transform: translate(0, 0) rotate(5deg); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 0.8; }
+  100% { transform: translate(40px, -120px) rotate(-15deg); opacity: 0; }
+}
+@keyframes floatNote3 {
+  0%   { transform: translate(0, 0) rotate(-5deg); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 0.6; }
+  100% { transform: translate(-20px, -90px) rotate(10deg); opacity: 0; }
+}
+@keyframes floatNote4 {
+  0%   { transform: translate(0, 0) rotate(10deg); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 0.7; }
+  100% { transform: translate(50px, -110px) rotate(-20deg); opacity: 0; }
+}
+
+/* 디스코 조명 */
+@keyframes disco1 {
+  0%   { background: rgba(255, 100, 150, 0.15); transform: scale(1); }
+  33%  { background: rgba(100, 200, 255, 0.2); transform: scale(1.2); }
+  66%  { background: rgba(255, 220, 50, 0.15); transform: scale(0.9); }
+  100% { background: rgba(255, 100, 150, 0.15); transform: scale(1); }
+}
+@keyframes disco2 {
+  0%   { background: rgba(100, 255, 150, 0.15); transform: scale(1.1); }
+  33%  { background: rgba(255, 100, 255, 0.2); transform: scale(0.8); }
+  66%  { background: rgba(100, 150, 255, 0.15); transform: scale(1.3); }
+  100% { background: rgba(100, 255, 150, 0.15); transform: scale(1.1); }
+}
+@keyframes disco3 {
+  0%   { background: rgba(255, 200, 50, 0.2); transform: scale(0.9); }
+  33%  { background: rgba(50, 200, 255, 0.15); transform: scale(1.2); }
+  66%  { background: rgba(255, 80, 80, 0.2); transform: scale(1); }
+  100% { background: rgba(255, 200, 50, 0.2); transform: scale(0.9); }
+}
+
+/* ─── 컴포넌트 스타일 ─── */
+
+.cat-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  height: 340px;
+  margin: 0 auto;
+}
+
+.cat-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.cat-body-container {
+  animation: dance 2s ease-in-out infinite;
+  will-change: transform;
+  transform-origin: bottom center;
+}
+
+.cat-image {
+  width: 180px;
+  height: auto;
+  animation: catWiggle 0.8s ease-in-out infinite;
+  will-change: transform;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+}
+
+.shadow {
+  width: 120px;
+  height: 20px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  animation: shadowPulse 2s ease-in-out infinite;
+  will-change: transform, opacity;
+  margin-top: -8px;
+}
+
+/* 음표 */
+.music-notes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.note {
+  position: absolute;
+  font-size: 1.6rem;
+  color: #ffe066;
+  text-shadow: 0 0 8px rgba(255, 224, 102, 0.8);
+  animation-duration: 2.2s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+.note-1 { top: 60px; left: 30px;  animation-name: floatNote1; animation-delay: 0s;    }
+.note-2 { top: 60px; right: 30px; animation-name: floatNote2; animation-delay: 0.5s;  }
+.note-3 { top: 90px; left: 55px;  animation-name: floatNote3; animation-delay: 1.1s;  }
+.note-4 { top: 90px; right: 55px; animation-name: floatNote4; animation-delay: 1.7s;  }
+
+/* 디스코 조명 */
+.disco-lights {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.light {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.light-1 { width: 200px; height: 200px; top: -20px; left: -40px;  animation: disco1 1.5s ease-in-out infinite; }
+.light-2 { width: 180px; height: 180px; top: 40px;  right: -30px; animation: disco2 1.8s ease-in-out infinite; }
+.light-3 { width: 160px; height: 160px; bottom: 0;  left: 50%;    transform: translateX(-50%); animation: disco3 2s ease-in-out infinite; }
